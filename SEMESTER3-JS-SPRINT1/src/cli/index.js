@@ -1,22 +1,36 @@
-const { Command } = require('commander');
-const program = new Command();
+// src/cli/index.js
+const init = require('./commands/init');
+const viewConfig = require('./commands/viewConfig');
+const updateConfig = require('./commands/updateConfig');
+const resetConfig = require('./commands/resetConfig');
+const generateToken = require('./commands/generateToken');
+const updateUser = require('./commands/updateUser');
+const searchUser = require('./commands/searchUser');
 
-program
-  .command('generateToken')
-  .description('Generate token for user confirmation')
-  .action(() => {
-    // Implement generateToken logic
-    console.log('Generating token...');
-  });
+const args = process.argv.slice(2);
 
-program
-  .command('initialize')
-  .description('Initialize application with default settings')
-  .action(() => {
-    // Implement initialization logic
-    console.log('Initializing application...');
-  });
-
-// Add other commands similarly
-
-program.parse(process.argv);
+switch (args[0]) {
+  case 'init':
+    init();
+    break;
+  case 'viewConfig':
+    viewConfig();
+    break;
+  case 'updateConfig':
+    updateConfig(args[1], args[2]);
+    break;
+  case 'resetConfig':
+    resetConfig();
+    break;
+  case 'generateToken':
+    generateToken(args[1]);
+    break;
+  case 'updateUser':
+    updateUser(args[1], args[2]);
+    break;
+  case 'searchUser':
+    searchUser(args[1]);
+    break;
+  default:
+    console.log('Command not found.');
+}
