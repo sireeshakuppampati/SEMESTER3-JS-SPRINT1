@@ -1,0 +1,8 @@
+.hero{
+    height: 500px;
+    width: 1425px;
+    border: 3px solid darkgreen;
+    background-color: #d0e9fe;
+    display: flex;
+    padding: 30px 30px;
+} 
